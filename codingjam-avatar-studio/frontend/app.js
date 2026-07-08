@@ -5,10 +5,16 @@ const promptText = document.getElementById('prompt-text');
 const scanningLaser = document.getElementById('scanning-laser');
 const styleBtns = document.querySelectorAll('.style-btn');
 const postActions = document.getElementById('post-actions');
+const cropControls = document.getElementById('crop-controls');
+const ratioBtns = document.querySelectorAll('.ratio-btn');
+const confirmCropBtn = document.getElementById('confirm-crop-btn');
+const actionBar = document.getElementById('action-bar');
 
 let currentBase64 = null;
+let cropper = null;
 
 heroArea.addEventListener('click', () => {
+    if (cropper) return; // Prevent file dialog when cropping
     fileInput.click();
 });
 
@@ -24,9 +30,46 @@ fileInput.addEventListener('change', (e) => {
             heroArea.classList.remove('empty');
             heroArea.style.border = 'none';
             
-            styleBtns.forEach(btn => btn.classList.add('active-options'));
+            if (cropper) {
+                cropper.destroy();
+            }
+            cropper = new Cropper(previewImage, {
+                aspectRatio: 1,
+                viewMode: 1,
+            });
+            
+            cropControls.style.display = 'flex';
+            actionBar.style.display = 'none';
+            postActions.style.display = 'none';
+            styleBtns.forEach(btn => btn.classList.remove('active-options'));
         };
         reader.readAsDataURL(file);
+    }
+});
+
+ratioBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        ratioBtns.forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        const ratio = parseFloat(e.target.dataset.ratio);
+        if (cropper) {
+            cropper.setAspectRatio(isNaN(ratio) ? NaN : ratio);
+        }
+    });
+});
+
+confirmCropBtn.addEventListener('click', () => {
+    if (cropper) {
+        const canvas = cropper.getCroppedCanvas();
+        currentBase64 = canvas.toDataURL('image/jpeg');
+        
+        cropper.destroy();
+        cropper = null;
+        
+        previewImage.src = currentBase64;
+        cropControls.style.display = 'none';
+        actionBar.style.display = 'grid';
+        styleBtns.forEach(btn => btn.classList.add('active-options'));
     }
 });
 

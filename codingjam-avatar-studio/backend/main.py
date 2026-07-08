@@ -38,7 +38,9 @@ def construct_gemini_prompt(styleId: str) -> str:
         "cyberpunk": "Transform this face into a high-quality Cyberpunk-style character with neon lighting.",
         "watercolor": "Transform this face into a beautiful watercolor painting portrait.",
         "grimdark": "Transform this face into a gritty, grimdark style portrait reminiscent of Warhammer, with dark fantasy aesthetics, battle-worn details, and dramatic moody lighting.",
-        "cartoon": "Transform this face into a vibrant, high-quality 2D cartoon character, expressive and fun."
+        "cartoon": "Transform this face into a vibrant, high-quality 2D cartoon character, expressive and fun.",
+        "professional": "Transform this face into a highly professional, polished corporate headshot, looking successful and sharp. Use the context clues of the image to inform the professional setting and attire.",
+        "luxury": "Transform this face into a highly luxurious, extravagant setting. Use the context clues of the image to make the person look incredibly wealthy, opulent, and living a lavish lifestyle."
     }
     if styleId not in prompts:
         raise ValueError(f"Unknown styleId: {styleId}")

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Avatar Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
@@ -25,13 +26,25 @@
 
             <input type="file" id="file-input" accept="image/*" style="display: none;" />
 
-            <div class="action-bar">
+            <div id="crop-controls" class="crop-controls" style="display: none;">
+                <div class="ratio-btns">
+                    <button class="ratio-btn active" data-ratio="1">1:1</button>
+                    <button class="ratio-btn" data-ratio="1.33333333">4:3</button>
+                    <button class="ratio-btn" data-ratio="0.75">3:4</button>
+                    <button class="ratio-btn" data-ratio="NaN">Free</button>
+                </div>
+                <button id="confirm-crop-btn" class="primary-action-btn">Confirm Crop</button>
+            </div>
+
+            <div id="action-bar" class="action-bar" style="display: none;">
                 <button class="style-btn" data-style="pixar">Pixar</button>
                 <button class="style-btn" data-style="anime">Anime</button>
                 <button class="style-btn" data-style="cyberpunk">Cyberpunk</button>
                 <button class="style-btn" data-style="watercolor">Watercolor</button>
                 <button class="style-btn" data-style="grimdark">Grimdark</button>
                 <button class="style-btn" data-style="cartoon">Cartoon</button>
+                <button class="style-btn" data-style="professional">Professional</button>
+                <button class="style-btn" data-style="luxury">Luxury</button>
             </div>
 
             <div id="post-actions" class="post-actions" style="display: none;">
@@ -40,6 +53,7 @@
             </div>
         </main>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <script src="app.js"></script>
     <script>
       if ('serviceWorker' in navigator) {

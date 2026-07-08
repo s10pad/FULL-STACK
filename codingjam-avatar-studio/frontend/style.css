@@ -19,7 +19,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     padding: 20px;
     text-align: center;
 }
@@ -38,8 +38,9 @@ header h1 {
 }
 
 .hero-area {
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    max-width: 450px;
+    height: 450px;
     margin: 0 auto 30px auto;
     border: 2px dashed var(--border-color);
     border-radius: 16px;
@@ -133,4 +134,54 @@ header h1 {
     color: white;
     font-weight: bold;
     cursor: pointer;
+}
+
+.crop-controls {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.ratio-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.ratio-btn {
+    background: #1e293b;
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ratio-btn.active, .ratio-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.primary-action-btn {
+    background: linear-gradient(90deg, #06b6d4, #3b82f6);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    width: 100%;
+    max-width: 300px;
+}
+
+.primary-action-btn:hover {
+    transform: scale(1.05);
+}
+
+.cropper-view-box, .cropper-face {
+    border-radius: 0;
 }
