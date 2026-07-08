@@ -73,7 +73,7 @@ def generate_avatar(req: GenerateRequest):
         
         # Call multimodal image generation model
         response = client.models.generate_content(
-            model="gemini-3.1-flash-image",
+            model="gemini-3.1-flash-image-preview",
             contents=[image, prompt],
             config=types.GenerateContentConfig(
                 image_config=types.ImageConfig(

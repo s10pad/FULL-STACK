@@ -56,11 +56,11 @@ async function generateAvatar(styleId) {
         });
 
         const data = await response.json();
-        if (data.success && data.avatarBase64) {
+        if (response.ok && data.success && data.avatarBase64) {
             previewImage.src = data.avatarBase64;
             postActions.style.display = 'flex';
         } else {
-            alert(data.error || 'Generation failed');
+            alert(data.detail || data.error || 'Generation failed');
         }
     } catch (err) {
         alert('Network error');
