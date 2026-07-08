@@ -1,0 +1,25 @@
+[project]
+name = "avatar-studio"
+version = "0.1.0"
+description = "AI Avatar Generator"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "google-genai",
+    "pydantic",
+    "pillow",
+    "python-dotenv>=1.2.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "httpx"
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+]

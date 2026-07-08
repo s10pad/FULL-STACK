@@ -1,0 +1,136 @@
+:root {
+    --bg-color: #0f172a;
+    --text-color: #f8fafc;
+    --accent: #06b6d4;
+    --laser-color: rgba(6, 182, 212, 0.8);
+    --border-color: #334155;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.underline {
+    height: 3px;
+    background: linear-gradient(90deg, #ec4899, #8b5cf6, #06b6d4);
+    width: 50%;
+    margin: 0 auto 30px auto;
+    border-radius: 3px;
+}
+
+.hero-area {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 30px auto;
+    border: 2px dashed var(--border-color);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.hero-area.empty p {
+    animation: breathe 2s infinite ease-in-out;
+    color: #94a3b8;
+}
+
+@keyframes breathe {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+#preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.action-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.style-btn {
+    background: #1e293b;
+    border: none;
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0.6;
+}
+
+.style-btn:hover {
+    transform: translateY(-2px);
+}
+
+.style-btn:active {
+    transform: translateY(2px);
+}
+
+.style-btn.active-options {
+    opacity: 1;
+    background: #334155;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.laser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--laser-color);
+    box-shadow: 0 0 15px var(--laser-color), 0 0 30px var(--laser-color);
+    animation: scan 2s infinite linear;
+    z-index: 10;
+}
+
+@keyframes scan {
+    0% { top: 0; }
+    50% { top: 100%; }
+    100% { top: 0; }
+}
+
+.post-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.post-actions button {
+    background: linear-gradient(90deg, #ec4899, #8b5cf6);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
