@@ -1,4 +1,4 @@
-const CACHE_NAME = 'avatar-studio-v1';
+const CACHE_NAME = 'avatar-studio-v2';
 const urlsToCache = [
   '/app/',
   '/app/index.html',
